@@ -20,7 +20,12 @@ include '_bootstrap.php';
 
 // proxy POST requests
 if (intercept('POST')) {
-    $path = '/session';
+    $sessionId = requiredQueryParam('session');
+    if (!is_null($sessionId)) {
+        $path = '/session/' . $sessionId;
+    } else {
+        $path = '/session';
+    }
 
     proxyCall($path);
 }
