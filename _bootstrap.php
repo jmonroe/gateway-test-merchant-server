@@ -100,6 +100,12 @@ function error($code, $message) {
     exit;
 }
 
+function queryParam($param) {
+    global $query;
+
+    return $query[$param];
+}
+
 function requiredQueryParam($param) {
     global $query;
 
